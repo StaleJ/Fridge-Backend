@@ -1,6 +1,6 @@
 package com.example.plugins
 
-import com.example.Items
+import com.example.models.Items
 import com.example.models.Item
 import io.ktor.application.*
 import io.ktor.request.*
