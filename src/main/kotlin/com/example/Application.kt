@@ -2,8 +2,6 @@ package com.example
 
 import com.example.models.Item
 import com.example.plugins.configureRouting
-import io.ktor.application.*
-import io.ktor.features.*
 import io.ktor.server.engine.*
 import io.ktor.server.tomcat.*
 import org.jetbrains.exposed.sql.Column
@@ -29,9 +27,8 @@ fun main() {
     embeddedServer(Tomcat, port = 8080, host = "0.0.0.0") {
 
 
-
-            configureDatabase()
-            configureRouting()
+        configureDatabase()
+        configureRouting()
 
 
     }.start(wait = true)
