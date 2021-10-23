@@ -1,11 +1,18 @@
 package com.example.models
 
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.dao.IntEntity
+import org.jetbrains.exposed.dao.IntEntityClass
+import org.jetbrains.exposed.dao.id.EntityID
+import org.jetbrains.exposed.dao.id.IntIdTable
 
-object Fridge : Table(){
-    val id: Column<Int> = integer("id").autoIncrement()
-    val name: Column<String> = varchar("name", 255)
-    val item: Column<Item> = TODO()
+object Fridges : IntIdTable() {
+    val name = varchar("name", 255)
+    val item = reference("item", Items)
+}
 
+class Fridge(id: EntityID<Int>) : IntEntity(id) {
+    companion object : IntEntityClass<Fridge>(Fridges)
+
+    var name by Fridges.name
+    var item by Item referencedOn Fridges.item
 }
