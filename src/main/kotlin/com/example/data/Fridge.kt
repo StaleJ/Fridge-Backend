@@ -1,4 +1,4 @@
-package com.example.models
+package com.example.data
 
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass

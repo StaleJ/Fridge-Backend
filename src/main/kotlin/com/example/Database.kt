@@ -1,6 +1,7 @@
 package com.example
 
-import com.example.models.Items
+import com.example.data.Books
+import com.example.data.Items
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.jackson.*
@@ -21,7 +22,7 @@ fun Application.configureDatabase() {
     )
 
     transaction {
-        SchemaUtils.create(Items)
+        SchemaUtils.create(Items, Books)
     }
 
 

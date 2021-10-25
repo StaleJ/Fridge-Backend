@@ -29,7 +29,8 @@ dependencies {
     implementation("org.jetbrains.exposed", "exposed-jdbc", "0.34.1")
     implementation("mysql:mysql-connector-java:8.0.25")
     implementation("io.ktor:ktor-jackson:$ktor_version")
-
+    implementation("com.zaxxer:HikariCP:3.4.5")
+    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:7.0.0")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
 }

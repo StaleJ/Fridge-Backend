@@ -1,17 +1,23 @@
-package com.example.models
+package com.example.data
 
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.transactions.transaction
 
 object Items : IntIdTable() {
     val name = varchar("name", 255)
     override val primaryKey = PrimaryKey(id, name = "PK_Item_ID")
 
-    fun toItem(row: ResultRow): Item =
-        Item()
+    fun toItem(row: ResultRow) {
+        transaction {
+            Item.new {
+                name = row[Items.name]
+            }
+        }
+    }
 
 }
 

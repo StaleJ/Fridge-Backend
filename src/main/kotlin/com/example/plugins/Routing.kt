@@ -1,7 +1,7 @@
 package com.example.plugins
 
-import com.example.models.Items
-import com.example.models.Item
+import com.example.data.Items
+import com.example.data.Item
 import io.ktor.application.*
 import io.ktor.request.*
 import io.ktor.response.*
@@ -19,7 +19,7 @@ fun Application.configureRouting() {
                     Items.selectAll().map { Items.toItem(it) }
                 }
                 call.respond(items)
-                println(items[0].name)
+
             }
 
             post("/") {
