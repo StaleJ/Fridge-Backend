@@ -1,7 +1,7 @@
-package com.example.services
+package at.stefangaller.services
 
-import com.example.data.Book
-import com.example.data.BookEntity
+import at.stefangaller.data.Book
+import at.stefangaller.data.BookEntity
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class BookService {
@@ -20,5 +20,4 @@ class BookService {
     fun deleteBook(bookId: Int) = transaction {
         BookEntity[bookId].delete()
     }
-
 }

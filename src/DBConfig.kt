@@ -1,10 +1,10 @@
-package com.example
+package at.stefangaller
 
-import com.example.data.Books
+import at.stefangaller.data.Books
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import io.ktor.application.*
-import io.ktor.util.*
+import io.ktor.application.Application
+import io.ktor.util.KtorExperimentalAPI
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction

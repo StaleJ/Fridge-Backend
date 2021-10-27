@@ -1,4 +1,4 @@
-package com.example.data
+package at.stefangaller.data
 
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
@@ -17,6 +17,7 @@ class BookEntity(id: EntityID<Int>) : IntEntity(id) {
     var author by Books.author
 
     override fun toString(): String = "Book($title, $author)"
+
     fun toBook() = Book(id.value, title, author)
 }
 

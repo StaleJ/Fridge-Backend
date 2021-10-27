@@ -1,8 +1,7 @@
-package com.example.routes
+package at.stefangaller.routes
 
-
-import com.example.data.Book
-import com.example.services.BookService
+import at.stefangaller.data.Book
+import at.stefangaller.services.BookService
 import io.ktor.application.call
 import io.ktor.features.NotFoundException
 import io.ktor.http.HttpStatusCode
@@ -16,6 +15,7 @@ import org.kodein.di.instance
 import org.kodein.di.ktor.di
 
 fun Route.books() {
+
     val bookService by di().instance<BookService>()
 
     get("books") {
@@ -33,6 +33,5 @@ fun Route.books() {
         val bookId = call.parameters["id"]?.toIntOrNull() ?: throw NotFoundException()
         bookService.deleteBook(bookId)
         call.respond(HttpStatusCode.OK)
-
     }
 }
