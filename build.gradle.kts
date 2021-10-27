@@ -24,13 +24,16 @@ dependencies {
     implementation("io.ktor:ktor-server-tomcat:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
+    implementation("io.ktor:ktor-server-netty:$ktor_version") // ktor netty server
+    implementation("ch.qos.logback:logback-classic:$logback_version")
+
     implementation("org.jetbrains.exposed", "exposed-core", "0.34.1")
     implementation("org.jetbrains.exposed", "exposed-dao", "0.34.1")
     implementation("org.jetbrains.exposed", "exposed-jdbc", "0.34.1")
     implementation("mysql:mysql-connector-java:8.0.25")
     implementation("io.ktor:ktor-jackson:$ktor_version")
-    implementation("com.zaxxer:HikariCP:3.4.5")
-    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:7.0.0")
+    implementation("com.zaxxer:HikariCP:5.0.0")
+    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:7.8.0")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
 }
