@@ -1,6 +1,8 @@
 package at.stefangaller
 
 import at.stefangaller.data.Books
+import at.stefangaller.data.Storage
+import at.stefangaller.data.Storages
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.application.Application
@@ -24,6 +26,7 @@ fun Application.initDB() {
 
 private fun createTables() = transaction {
     SchemaUtils.create(
-        Books
+        Books,
+        Storages
     )
 }
