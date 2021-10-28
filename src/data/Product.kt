@@ -7,6 +7,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.`java-time`.date
 import org.jetbrains.exposed.sql.`java-time`.datetime
 import java.sql.Date
+import java.time.LocalDate
 
 object Products : IntIdTable() {
     val productName = varchar("productName", 255)
@@ -27,5 +28,5 @@ class ProductEntity(id: EntityID<Int>) : IntEntity(id) {
 data class Product(
     val productId: Int,
     val productName: String,
-    val expiredDate: 
+    val expiredDate: LocalDate
 )
