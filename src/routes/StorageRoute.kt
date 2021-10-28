@@ -29,6 +29,7 @@ fun Route.storage() {
     delete("storage/{id}") {
         val storageId = call.parameters["id"]?.toIntOrNull() ?: throw NotFoundException()
         storageService.deleteStorage(storageId)
+        call.respond(storageService.getAllStorages())
         call.respond(HttpStatusCode.OK)
     }
 
