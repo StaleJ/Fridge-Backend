@@ -7,4 +7,5 @@ import org.kodein.di.singleton
 fun DI.MainBuilder.bindServices(){
     bind<BookService>() with singleton { BookService() }
     bind<StorageService>() with singleton { StorageService() }
+    bind<ProductService>() with singleton { ProductService() }
 }

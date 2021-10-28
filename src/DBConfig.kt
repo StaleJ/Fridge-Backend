@@ -1,12 +1,12 @@
 package at.stefangaller
 
 import at.stefangaller.data.Books
-import at.stefangaller.data.Storage
+import at.stefangaller.data.Products
 import at.stefangaller.data.Storages
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import io.ktor.application.Application
-import io.ktor.util.KtorExperimentalAPI
+import io.ktor.application.*
+import io.ktor.util.*
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -27,6 +27,7 @@ fun Application.initDB() {
 private fun createTables() = transaction {
     SchemaUtils.create(
         Books,
-        Storages
+        Storages,
+        Products
     )
 }
