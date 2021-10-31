@@ -11,6 +11,7 @@ class InStoragesService {
     }
 
     fun addProductToStorage(inStorage: InStorage) = transaction {
+        // TODO: Make update not new if the product is in storage
         InStorageEntity.new {
             this.product = inStorage.product
             this.storage = inStorage.storage

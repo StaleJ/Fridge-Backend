@@ -9,6 +9,7 @@ object InStorages : IntIdTable() {
     val storage = reference("storageId", Storages)
     val product = reference("productId", Products)
     val quantity = integer("quantity")
+    override val primaryKey = PrimaryKey(storage, product, name="PK_InStorage")
 }
 
 class InStorageEntity(id: EntityID<Int>) : IntEntity(id) {
@@ -20,11 +21,10 @@ class InStorageEntity(id: EntityID<Int>) : IntEntity(id) {
 
     override fun toString(): String = "InStorage(${storage.storageName}, ${product.productName}, $quantity)"
 
-    fun toInStorage() = InStorage(id.value, storage, product, quantity)
+    fun toInStorage() = InStorage(storage, product, quantity)
 }
 
 data class InStorage(
-    val InStoragesId: Int,
     val storage: StorageEntity,
     val product: ProductEntity,
     val quantity: Int

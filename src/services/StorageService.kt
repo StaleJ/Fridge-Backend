@@ -16,6 +16,10 @@ class StorageService {
         }
     }
 
+    fun getStorage(storageId: Int) = transaction {
+        StorageEntity[storageId]
+    }
+
     fun deleteStorage(storageId: Int) = transaction {
         StorageEntity[storageId].delete()
     }

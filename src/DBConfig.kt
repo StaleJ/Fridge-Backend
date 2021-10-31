@@ -1,6 +1,7 @@
 package at.stefangaller
 
 
+import at.stefangaller.data.InStorages
 import at.stefangaller.data.Products
 import at.stefangaller.data.Storages
 import com.zaxxer.hikari.HikariConfig
@@ -27,6 +28,7 @@ fun Application.initDB() {
 private fun createTables() = transaction {
     SchemaUtils.create(
         Storages,
-        Products
+        Products,
+        InStorages
     )
 }

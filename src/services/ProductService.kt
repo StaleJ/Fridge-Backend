@@ -10,6 +10,10 @@ class ProductService {
         ProductEntity.all().map(ProductEntity::toProduct)
     }
 
+    fun getProduct(productId: Int) = transaction {
+        ProductEntity[productId]
+    }
+
     fun addProduct(product: Product) = transaction {
         ProductEntity.new {
             this.productName = product.productName
