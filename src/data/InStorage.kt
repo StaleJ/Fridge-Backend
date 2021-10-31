@@ -17,6 +17,10 @@ class InStorageEntity(id: EntityID<Int>) : IntEntity(id) {
     var storageId by StorageEntity referencedOn InStorages.storageId
     var productId by ProductEntity referencedOn InStorages.productId
     var quantity by InStorages.quantity
+
+    override fun toString(): String = "InStorage(${storageId.storageName}, ${productId.productName}, $quantity)"
+
+    fun toInStorage() = InStorage(id.value, storageId.id.value, productId.id.value, quantity)
 }
 
 data class InStorage(
