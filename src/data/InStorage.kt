@@ -9,7 +9,7 @@ object InStorages : IntIdTable() {
     val storage = reference("storageId", Storages)
     val product = reference("productId", Products)
     val quantity = integer("quantity")
-    override val primaryKey = PrimaryKey(storage, product, name="PK_InStorage")
+    override val primaryKey = PrimaryKey(storage, product, name = "PK_InStorage")
 }
 
 class InStorageEntity(id: EntityID<Int>) : IntEntity(id) {
