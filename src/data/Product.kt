@@ -7,22 +7,19 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 
 object Products : IntIdTable() {
     val productName = varchar("productName", 255)
-    val expiredDate = varchar("expiredDate", 10)
 }
 
 class ProductEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<ProductEntity>(Products)
 
     var productName by Products.productName
-    var expiredDate by Products.expiredDate
 
-    override fun toString(): String = "Product($productName, $expiredDate)"
+    override fun toString(): String = "Product($productName)"
 
-    fun toProduct() = Product(id.value, productName, expiredDate)
+    fun toProduct() = Product(id.value, productName)
 }
 
 data class Product(
     val productId: Int,
-    val productName: String,
-    val expiredDate: String
+    val productName: String
 )

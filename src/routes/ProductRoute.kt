@@ -1,6 +1,7 @@
 package at.stefangaller.routes
 
 import at.stefangaller.data.InStorage
+import at.stefangaller.data.PostInStorage
 import at.stefangaller.data.Product
 import at.stefangaller.services.InStoragesService
 import at.stefangaller.services.ProductService
@@ -13,12 +14,16 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import org.kodein.di.instance
 import org.kodein.di.ktor.di
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 fun Route.product() {
 
     val productService by di().instance<ProductService>()
     val storagesService by di().instance<StorageService>()
     val inStorageService by di().instance<InStoragesService>()
+    val dateFormat = DateTimeFormatter.ofPattern("dd MMM uuuu", Locale.ENGLISH)
 
     get("products") {
         val allProducts = productService.getAllProduct()
@@ -30,14 +35,14 @@ fun Route.product() {
         productService.addProduct(productRequest)
         call.respond(HttpStatusCode.Accepted)
     }
-
-    post("product/{productId}/storage/{storageId}/{quantity}") {
-        val productId = call.parameters["productId"]?.toIntOrNull() ?: throw NotFoundException()
-        val storageId = call.parameters["storageId"]?.toIntOrNull() ?: throw NotFoundException()
-        val quality = call.parameters["quantity"]?.toIntOrNull() ?: throw NotFoundException()
-        val product = productService.getProduct(productId)
-        val storage = storagesService.getStorage(storageId)
-        val productToStorage = InStorage(storage, product, quality)
+    
+    post("inStorage") {
+        val inStorageRequest = call.receive<PostInStorage>()
+        val product = productService.getProduct(inStorageRequest.productId)
+        val storage = storagesService.getStorage(inStorageRequest.storageId)
+        val expiredDate = LocalDate.parse(inStorageRequest.expiredDate, dateFormat)
+        val quality = inStorageRequest.quantity
+        val productToStorage = InStorage(storage, product, quality, expiredDate)
         inStorageService.addProductToStorage(productToStorage)
         call.respond(HttpStatusCode.Accepted)
     }

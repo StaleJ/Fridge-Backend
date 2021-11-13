@@ -16,6 +16,7 @@ class InStoragesService {
             this.product = inStorage.product
             this.storage = inStorage.storage
             this.quantity = inStorage.quantity
+            this.expiredDate = inStorage.expiredDate
         }
 
     }

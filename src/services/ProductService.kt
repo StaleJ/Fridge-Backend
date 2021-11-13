@@ -17,7 +17,6 @@ class ProductService {
     fun addProduct(product: Product) = transaction {
         ProductEntity.new {
             this.productName = product.productName
-            this.expiredDate = product.expiredDate
         }
     }
 
