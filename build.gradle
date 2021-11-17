@@ -47,6 +47,7 @@ dependencies {
 
 
     testImplementation "io.ktor:ktor-server-tests:$ktor_version" // test framework
+    implementation "io.ktor:ktor-auth:$ktor_version" // Oauth
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
